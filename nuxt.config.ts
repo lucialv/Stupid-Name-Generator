@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 	plugins: ['@/plugins/toast.js'],
 	app: {
 		head: {
-			title: 'Lucía name-generator',
+			title: 'Lucía Name Generator',
 			htmlAttrs: { lang: 'en' },
 			link: [
 				{ rel: 'canonical', href: 'https://name-generator.luciaa.live' },
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 				{ name: 'theme-color', content: '#F7FEE7' },
 				{
 					name: 'description',
-					content: 'Lucía name-generator'
+					content: 'A stupid generator made for fun ;)'
 				},
 				{
 					name: 'viewport',
@@ -56,31 +56,31 @@ export default defineNuxtConfig({
 				{ name: 'shortlink', content: 'https://name-generator.luciaa.live' },
 				{
 					name: 'subject',
-					content: 'Lucía name-generator'
+					content: 'A stupid generator made for fun ;)'
 				},
 				{
 					name: 'summary',
-					content: 'Lucía name-generator.'
+					content: 'A stupid generator made for fun ;)'
 				},
 				{ name: 'url', content: 'https://name-generator.luciaa.live' },
 				{
 					property: 'og:description',
-					content: 'Lucía name-generator'
+					content: 'A stupid generator made for fun ;)'
 				},
 				{ property: 'og:email', content: 'mishudiscord@gmail.com' },
 				{ property: 'og:locale', content: 'en_US' },
 				{ property: 'og:site_name', content: 'Lucía Álvarez' },
-				{ property: 'og:title', content: 'Lucía name-generator' },
+				{ property: 'og:title', content: 'Lucía Name Generator' },
 				{ property: 'og:type', content: 'website' },
 				{ property: 'og:url', content: 'https://name-generator.luciaa.live' },
 				{ property: 'og:image', content: '/metaimage.png' },
 				{ property: 'twitter:card', content: 'summary_large_image' },
 				{ property: 'twitter:creator', content: '@lucialv' },
 				{ property: 'twitter:site', content: '@lucialv' },
-				{ property: 'twitter:title', content: 'Lucía name-generator' },
+				{ property: 'twitter:title', content: 'Lucía Name Generator' },
 				{ property: 'twitter:url', content: 'https://name-generator.luciaa.live' },
 				{ property: 'twitter:image', content: '/metaimage.png' },
-				{ property: 'twitter:description', content: 'Lucía name-generator' }
+				{ property: 'twitter:description', content: 'A stupid generator made for fun ;)' }
 			]
 		}
 	}
