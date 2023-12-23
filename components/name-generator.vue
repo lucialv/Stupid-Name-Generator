@@ -81,7 +81,7 @@
 							type="checkbox"
 							class="form-checkbox h-5 w-5 rounded text-blue-500 focus:border-blue-300 focus:outline-none focus:ring"
 						/>
-						<span class="w-24">Añadir carita</span>
+						<span class="w-24">Carita</span>
 					</label>
 					<label class="flex cursor-pointer items-center space-x-2">
 						<input
@@ -89,7 +89,7 @@
 							type="checkbox"
 							class="form-checkbox h-5 w-5 rounded text-blue-500 focus:border-blue-300 focus:outline-none focus:ring"
 						/>
-						<span class="w-28">Añadir número</span>
+						<span class="w-28">Número</span>
 					</label>
 					<input
 						v-model="customNumber"
