@@ -1,8 +1,10 @@
 <!-- pages/index.vue -->
 <template>
-	<div class="mx-8 my-8 flex">
+	<div class="mx-8 my-8 mt-8 flex md:mt-16">
 		<div class="md:ml-16">
-			<h1 class="mb-8 text-center text-3xl font-bold md:text-4xl">Generador de Nombres Aleatorios</h1>
+			<h1 class="mb-8 text-center text-3xl font-bold md:text-4xl">
+				Generador de <span class="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Nombres Aleatorios</span>
+			</h1>
 			<div class="ml-8 md:ml-0">
 				<h1 class="mb-4 text-2xl font-semibold">Lenguaje</h1>
 				<div class="mb-4 flex space-x-4">
