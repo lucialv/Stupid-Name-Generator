@@ -2,127 +2,135 @@
 <template>
 	<div class="mx-8 my-8 flex">
 		<div class="md:ml-16">
-			<h1 class="mb-8 text-4xl font-bold">Generador de Nombres Aleatorios</h1>
-			<h1 class="mb-4 text-2xl font-semibold">Lenguaje</h1>
-			<div class="mb-4 flex space-x-4">
-				<button
-					@click="selectLanguage('spanish')"
-					:class="{
-						'border-sky-600': selectedLanguage === 'spanish',
-						'border-2 border-black/20 bg-white text-black': selectedLanguage !== 'spanish'
-					}"
-					class="flex rounded-full border-2 border-black/20 px-4 py-2 focus:outline-none"
-				>
-					Español
-					<img
-						width="20"
-						height="20"
-						class="ml-2 mt-[2px]"
-						src="https://img.icons8.com/external-others-iconmarket/64/external-spain-flags-others-iconmarket.png"
-						alt="external-spain-flags-others-iconmarket"
-					/>
-				</button>
-				<button
-					@click="selectLanguage('english')"
-					:class="{
-						'border-sky-600': selectedLanguage === 'english',
-						'border-2 border-black/20 bg-white text-black': selectedLanguage !== 'english'
-					}"
-					class="flex rounded-full border-2 border-black/20 px-4 py-2 focus:outline-none"
-				>
-					Inglés
-					<img
-						width="20"
-						height="20"
-						class="ml-2 mt-[2px] rounded-xl"
-						src="https://img.icons8.com/color/48/great-britain.png"
-						alt="great-britain"
-					/>
-				</button>
-			</div>
-			<h1 class="mb-4 text-2xl font-semibold">Género</h1>
-			<div class="mb-4 flex space-x-4">
-				<button
-					@click="selectGender('male')"
-					:class="{
-						'border-sky-600': selectedGender === 'male',
-						'border-2 border-black/20 bg-white text-black': selectedGender !== 'male'
-					}"
-					class="flex rounded-full border-2 border-black/20 px-4 py-2 focus:outline-none"
-				>
-					Chico
-					<img width="20" height="20" class="ml-[3px] mt-[2px]" src="https://img.icons8.com/office/16/male-stroke.png" alt="male-stroke" />
-				</button>
-				<button
-					@click="selectGender('female')"
-					:class="{
-						'border-pink-500': selectedGender === 'female',
-						'border-2 border-black/20 bg-white text-black': selectedGender !== 'female'
-					}"
-					class="flex rounded-full border-2 border-black/20 px-4 py-2 focus:outline-none"
-				>
-					Chica <img width="24" height="24" src="https://img.icons8.com/emoji/48/female-sign-emoji.png" alt="female-sign-emoji" />
-				</button>
-			</div>
-			<h1 class="mb-4 text-2xl font-semibold">Extras</h1>
-			<div class="mb-4 flex space-x-4">
-				<label class="flex cursor-pointer items-center space-x-2">
+			<h1 class="mb-8 text-center text-3xl font-bold md:text-4xl">Generador de Nombres Aleatorios</h1>
+			<div class="ml-8 md:ml-0">
+				<h1 class="mb-4 text-2xl font-semibold">Lenguaje</h1>
+				<div class="mb-4 flex space-x-4">
+					<button
+						@click="selectLanguage('spanish')"
+						:class="{
+							'border-sky-600': selectedLanguage === 'spanish',
+							'border-2 border-black/20 bg-white text-black': selectedLanguage !== 'spanish'
+						}"
+						class="flex rounded-full border-2 border-black/20 px-4 py-2 focus:outline-none"
+					>
+						Español
+						<img
+							width="20"
+							height="20"
+							class="ml-2 mt-[2px]"
+							src="https://img.icons8.com/external-others-iconmarket/64/external-spain-flags-others-iconmarket.png"
+							alt="external-spain-flags-others-iconmarket"
+						/>
+					</button>
+					<button
+						@click="selectLanguage('english')"
+						:class="{
+							'border-sky-600': selectedLanguage === 'english',
+							'border-2 border-black/20 bg-white text-black': selectedLanguage !== 'english'
+						}"
+						class="flex rounded-full border-2 border-black/20 px-4 py-2 focus:outline-none"
+					>
+						Inglés
+						<img
+							width="20"
+							height="20"
+							class="ml-2 mt-[2px] rounded-xl"
+							src="https://img.icons8.com/color/48/great-britain.png"
+							alt="great-britain"
+						/>
+					</button>
+				</div>
+				<h1 class="mb-4 text-2xl font-semibold">Género</h1>
+				<div class="mb-4 flex space-x-4">
+					<button
+						@click="selectGender('male')"
+						:class="{
+							'border-sky-600': selectedGender === 'male',
+							'border-2 border-black/20 bg-white text-black': selectedGender !== 'male'
+						}"
+						class="flex rounded-full border-2 border-black/20 px-4 py-2 focus:outline-none"
+					>
+						Chico
+						<img
+							width="20"
+							height="20"
+							class="ml-[3px] mt-[2px]"
+							src="https://img.icons8.com/office/16/male-stroke.png"
+							alt="male-stroke"
+						/>
+					</button>
+					<button
+						@click="selectGender('female')"
+						:class="{
+							'border-pink-500': selectedGender === 'female',
+							'border-2 border-black/20 bg-white text-black': selectedGender !== 'female'
+						}"
+						class="flex rounded-full border-2 border-black/20 px-4 py-2 focus:outline-none"
+					>
+						Chica <img width="24" height="24" src="https://img.icons8.com/emoji/48/female-sign-emoji.png" alt="female-sign-emoji" />
+					</button>
+				</div>
+				<h1 class="mb-4 text-2xl font-semibold">Extras</h1>
+				<div class="mb-4 flex space-x-4">
+					<label class="flex cursor-pointer items-center space-x-2">
+						<input
+							v-model="includeCarita"
+							type="checkbox"
+							class="form-checkbox h-5 w-5 rounded text-blue-500 focus:border-blue-300 focus:outline-none focus:ring"
+						/>
+						<span class="w-24">Añadir carita</span>
+					</label>
+					<label class="flex cursor-pointer items-center space-x-2">
+						<input
+							v-model="includeNumber"
+							type="checkbox"
+							class="form-checkbox h-5 w-5 rounded text-blue-500 focus:border-blue-300 focus:outline-none focus:ring"
+						/>
+						<span class="w-28">Añadir número</span>
+					</label>
 					<input
-						v-model="includeCarita"
-						type="checkbox"
-						class="form-checkbox h-5 w-5 rounded text-blue-500 focus:border-blue-300 focus:outline-none focus:ring"
+						v-model="customNumber"
+						type="number"
+						placeholder="Número"
+						class="w-[100px] rounded border p-2"
+						:class="{ invisible: !includeNumber }"
 					/>
-					<span class="w-24">Añadir carita</span>
-				</label>
-				<label class="flex cursor-pointer items-center space-x-2">
-					<input
-						v-model="includeNumber"
-						type="checkbox"
-						class="form-checkbox h-5 w-5 rounded text-blue-500 focus:border-blue-300 focus:outline-none focus:ring"
-					/>
-					<span class="w-28">Añadir número</span>
-				</label>
-				<input
-					v-model="customNumber"
-					type="number"
-					placeholder="Número"
-					class="w-[100px] rounded border p-2"
-					:class="{ invisible: !includeNumber }"
-				/>
-			</div>
-			<textarea
-				v-model="generatedName"
-				class="mb-4 h-11 w-[80%] resize-none overflow-hidden rounded-lg border p-2 text-center sm:w-[100%]"
-				readonly
-			></textarea>
-			<button
-				@click="generateName"
-				:disabled="!selectedLanguage || !selectedGender"
-				class="w-40 rounded bg-green-500 px-4 py-2 text-white sm:mx-auto"
-				:class="{ 'cursor-not-allowed opacity-50': !selectedLanguage || !selectedGender }"
-			>
-				Generar Nombre
-			</button>
-			<button v-if="generatedName" @click="copyToClipboard" class="rounded- ml-4 bg-blue-500 px-4 py-2 text-white">
-				Copiar
-				<svg
-					aria-hidden="true"
-					focusable="false"
-					role="img"
-					viewBox="0 0 16 16"
-					width="16"
-					height="16"
-					fill="currentColor"
-					class="mb-1 ml-2 inline-block"
+				</div>
+				<textarea
+					v-model="generatedName"
+					class="mb-4 h-11 w-[80%] resize-none overflow-hidden rounded-lg border p-2 text-center sm:w-[100%]"
+					readonly
+				></textarea>
+				<button
+					@click="generateName"
+					:disabled="!selectedLanguage || !selectedGender"
+					class="w-40 rounded bg-green-500 px-4 py-2 text-white sm:mx-auto"
+					:class="{ 'cursor-not-allowed opacity-50': !selectedLanguage || !selectedGender }"
 				>
-					<path
-						d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"
-					></path>
-					<path
-						d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"
-					></path>
-				</svg>
-			</button>
+					Generar Nombre
+				</button>
+				<button v-if="generatedName" @click="copyToClipboard" class="rounded- ml-4 bg-blue-500 px-4 py-2 text-white">
+					Copiar
+					<svg
+						aria-hidden="true"
+						focusable="false"
+						role="img"
+						viewBox="0 0 16 16"
+						width="16"
+						height="16"
+						fill="currentColor"
+						class="mb-1 ml-2 inline-block"
+					>
+						<path
+							d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"
+						></path>
+						<path
+							d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"
+						></path>
+					</svg>
+				</button>
+			</div>
 		</div>
 	</div>
 </template>
