@@ -5,7 +5,7 @@
 			<h1 class="mb-8 text-center text-3xl font-bold md:text-4xl">
 				Generador de <span class="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Nombres Aleatorios</span>
 			</h1>
-			<div class="ml-8 md:ml-0">
+			<div class="md:ml-0">
 				<h1 class="mb-4 text-2xl font-semibold">Lenguaje</h1>
 				<div class="mb-4 flex space-x-4">
 					<button
@@ -99,6 +99,30 @@
 						:class="{ invisible: !includeNumber }"
 					/>
 				</div>
+				<div class="mb-4 flex space-x-4">
+					<button
+						@click="clapped()"
+						:class="{
+							'border-sky-600': clappeddd,
+							'border-2 border-black/20 bg-white text-black': !clappeddd
+						}"
+						class="flex rounded-full border-2 border-black/20 px-4 py-2 focus:outline-none"
+					>
+						<span>Clapped by, Boxxed by, 200 by</span>
+					</button>
+				</div>
+				<div class="mb-4 flex space-x-4">
+					<button
+						@click="optionss()"
+						:class="{
+							'border-sky-600': optionsss,
+							'border-2 border-black/20 bg-white text-black': !optionsss
+						}"
+						class="flex rounded-full border-2 border-black/20 px-4 py-2 focus:outline-none"
+					>
+						<span>HD, PRO, TTV, T.TV, FPS</span>
+					</button>
+				</div>
 				<textarea
 					v-model="generatedName"
 					class="mb-4 h-11 w-[80%] resize-none overflow-hidden rounded-lg border p-2 text-center sm:w-[100%]"
@@ -112,7 +136,7 @@
 				>
 					Generar Nombre
 				</button>
-				<button v-if="generatedName" @click="copyToClipboard" class="rounded- ml-4 bg-blue-500 px-4 py-2 text-white">
+				<button v-if="generatedName" @click="copyToClipboard" class="ml-4 rounded bg-blue-500 px-4 py-2 text-white">
 					Copiar
 					<svg
 						aria-hidden="true"
@@ -147,6 +171,7 @@ const includeCarita = ref(false);
 const includeNumber = ref(false);
 const customNumber = ref('');
 const generatedName = ref('');
+const selectedCategories = ref([]);
 
 const Toast = useToast();
 
@@ -384,6 +409,28 @@ const selectGender = (gender) => {
 	selectedGender.value = gender;
 };
 
+const clappeddd = ref(false);
+
+function clapped() {
+	toggleCategory('clapped');
+	if (clappeddd.value == false) {
+		clappeddd.value = true;
+	} else {
+		clappeddd.value = false;
+	}
+}
+
+const optionsss = ref(false);
+
+function optionss() {
+	toggleCategory('options');
+	if (optionsss.value == false) {
+		optionsss.value = true;
+	} else {
+		optionsss.value = false;
+	}
+}
+
 const copyToClipboard = () => {
 	navigator.clipboard.writeText(generatedName.value);
 	Toast.success('Nombre copiado al portapapeles!', {
@@ -401,25 +448,78 @@ const copyToClipboard = () => {
 	});
 };
 
-const generateName = () => {
+const toggleCategory = (category) => {
+	if (selectedCategories.value.includes(category)) {
+		// Si ya está seleccionado, quitarlo
+		selectedCategories.value = selectedCategories.value.filter((c) => c !== category);
+	} else {
+		// Si no está seleccionado, agregarlo
+		selectedCategories.value.push(category);
+	}
+};
+
+const generateNameForClappedCategory = (name) => {
+	const clappedOptions = ['clapped by ', 'boxxed by ', '200 by '];
+	const randomOption = clappedOptions[Math.floor(Math.random() * clappedOptions.length)];
+	return name + randomOption;
+};
+
+const generateNameForOptionsCategory = (name) => {
+	const options = ['HD', 'PRO', 'TTV', 'T.TV', 'FPS'];
+	const randomOption = options[Math.floor(Math.random() * options.length)];
+	return name + randomOption;
+};
+const generateNameForOptionsAndClappedCategory = (name) => {
+	const options = ['HD', 'PRO', 'TTV', 'T.TV', 'FPS'];
+	const clappedOptions = ['clapped by ', 'boxxed by ', '200 by '];
+	const randomBy = clappedOptions[Math.floor(Math.random() * clappedOptions.length)];
+	const randomOption = options[Math.floor(Math.random() * options.length)];
+	return name + randomBy + randomOption;
+};
+
+const generateCarita = () => {
+	const caritas = ['UwU', 'ツ', '-_-', 'OwO'];
+	return includeCarita.value ? caritas[Math.floor(Math.random() * caritas.length)] : '';
+};
+
+const generateRealName = (language, gender) => {
 	let namesArray = [];
 
-	if (selectedLanguage.value === 'spanish') {
-		namesArray = selectedGender.value === 'male' ? spanishMaleNames : spanishFemaleNames;
-	} else if (selectedLanguage.value === 'english') {
-		namesArray = selectedGender.value === 'male' ? englishMaleNames : englishFemaleNames;
+	if (language === 'spanish' && gender === 'male') {
+		namesArray = spanishMaleNames;
+	} else if (language === 'spanish' && gender === 'female') {
+		namesArray = spanishFemaleNames;
+	} else if (language === 'english' && gender === 'male') {
+		namesArray = englishMaleNames;
+	} else if (language === 'english' && gender === 'female') {
+		namesArray = englishFemaleNames;
 	}
 
-	const randomIndex = Math.floor(Math.random() * namesArray.length);
-	const generatedNameWithoutCarita = namesArray[randomIndex];
-	let finalName = generatedNameWithoutCarita;
+	const randomName = namesArray[Math.floor(Math.random() * namesArray.length)];
+	return randomName;
+};
 
-	if (includeNumber.value) {
-		const numberToAdd = customNumber.value ? customNumber.value : Math.floor(Math.random() * 100);
-		finalName += numberToAdd;
+const generateName = () => {
+	let finalName = '';
+
+	if (selectedCategories.value.includes('clapped') && selectedCategories.value.includes('options')) {
+		const primero = generateNameForClappedCategory(finalName);
+		const segundo = generateRealName(selectedLanguage.value, selectedGender.value);
+		const tercero = generateNameForOptionsCategory(finalName);
+		finalName = primero + segundo + tercero;
+	} else if (selectedCategories.value.includes('clapped')) {
+		finalName += generateNameForClappedCategory(finalName);
+		finalName += generateRealName(selectedLanguage.value, selectedGender.value);
+	} else if (selectedCategories.value.includes('options')) {
+		finalName += generateNameForOptionsCategory(finalName);
+		const nombreee = generateRealName(selectedLanguage.value, selectedGender.value);
+		finalName = nombreee + finalName;
+	} else {
+		finalName += generateRealName(selectedLanguage.value, selectedGender.value);
 	}
 
-	finalName += includeCarita.value ? '-_-' : '';
+	finalName += includeNumber.value ? customNumber.value || Math.floor(Math.random() * 100) : '';
+	finalName += generateCarita();
 
 	generatedName.value = finalName;
 	Toast.success('Nombre generado con éxito!', {
